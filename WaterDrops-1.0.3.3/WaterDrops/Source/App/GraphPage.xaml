@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="WaterDrops.GraphPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WaterDrops"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Required"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light" Source="ms-appx:///ThemeResources/LightTheme.xaml" />
+                <ResourceDictionary x:Key="Dark" Source="ms-appx:///ThemeResources/DarkTheme.xaml" />
+                <ResourceDictionary x:Key="HighContrast" />
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid
+            Height="600"
+            MinWidth="350"
+            MaxWidth="1500"
+            Margin="30,25,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Viewbox
+                    MaxWidth="24"
+                    MaxHeight="24"
+                    Margin="0,1,10,0"
+                    VerticalAlignment="Top">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE9D9;" />
+                </Viewbox>
+                <TextBlock
+                    x:Name="txt"
+                    Text="Water Drinking Graph"
+                    VerticalAlignment="Top"
+                    FontSize="18"
+                    FontWeight="SemiBold" />
+            </StackPanel>
+            <Charting:Chart x:Name="lineChart" Margin="2,0,0,0" Width="1000" Height="400" Grid.Row="1" 
+                            HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Charting:BarSeries Title="Drank per day" Margin="0" IndependentValuePath="Name" DependentValuePath="Amount"/>
+                <Charting:BarSeries Title="Should drink per day" Margin="0" IndependentValuePath="Name" DependentValuePath="Amount"/>
+            </Charting:Chart>
+        </Grid>
+    </ScrollViewer>
+</Page>
